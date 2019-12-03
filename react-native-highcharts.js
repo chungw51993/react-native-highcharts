@@ -38,6 +38,7 @@ class ChartWeb extends Component {
                                       : ''}
                         ${this.props.guage ? '<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>'
                                       : ''}
+                        <script src="https://code.highcharts.com/modules/sunburst.js"></script>
                         <script src="https://code.highcharts.com/modules/exporting.js"></script>
                         <script>
                         $(function () {

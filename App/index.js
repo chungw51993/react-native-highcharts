@@ -38,6 +38,7 @@ class ChartWeb extends Component {
                                       : ''}
                         ${this.props.guage ? '<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>'
                                       : ''}
+                        <script src="https://code.highcharts.com/modules/sunburst.js"></script>
                         <script src="https://code.highcharts.com/modules/exporting.js"></script>
                         <script>
                         $(function () {
@@ -75,7 +76,7 @@ class ChartWeb extends Component {
 
         config = JSON.parse(config)
         let concatHTML = `${this.state.init}${flattenObject(config)}${this.state.end}`;
-        
+
         return (
           <View style={this.props.style}>
               <WebView
