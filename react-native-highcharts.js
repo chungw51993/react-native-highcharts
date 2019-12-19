@@ -26,8 +26,12 @@ class ChartWeb extends Component {
                         right:0;
                         bottom:0;
                         position:absolute;
+                        background-color: ${this.props.backgroundColor};
                         user-select: none;
                         -webkit-user-select: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                     </style>
                     <head>
