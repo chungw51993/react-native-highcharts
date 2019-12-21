@@ -60,7 +60,8 @@ class ChartWeb extends Component {
             Wlayout:{
                 height:win.height,
                 width:win.width
-            }
+            },
+            loaded: false,
         }
     }
 
@@ -73,6 +74,7 @@ class ChartWeb extends Component {
     }
 
     render() {
+        const { loaded } = this.state;
         let config = JSON.stringify(this.props.config, function (key, value) {//create string of json but if it detects function it uses toString()
             return (typeof value === 'function') ? value.toString() : value;
         });
@@ -82,7 +84,12 @@ class ChartWeb extends Component {
         let concatHTML = `${this.state.init}${flattenObject(config)}${this.state.end}`;
 
         return (
-          <View style={this.props.style}>
+          <View
+              style={{
+                  ...this.props.style,
+                  opacity: loaded ? 1 : 0,
+              }}
+          >
               <WebView
                   onLayout={this.reRenderWebView.bind(this)}
                   style={styles.full}
@@ -93,6 +100,11 @@ class ChartWeb extends Component {
                   scrollEnabled={false}
                   automaticallyAdjustContentInsets={true}
                   originWhitelist={["file://"]}
+                  onLoadEnd={(e) => {
+                      if (!loaded) {
+                          this.setState({ loaded: true });
+                      }
+                  }}
                   {...this.props}
               />
           </View>
