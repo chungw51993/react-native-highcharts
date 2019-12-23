@@ -18,6 +18,9 @@ class ChartWeb extends Component {
             init:`<html>
                     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
                     <style media="screen" type="text/css">
+                    html {
+                      background-color: ${this.props.backgroundColor};
+                    }
                     #container {
                         width:100%;
                         height:100%;
