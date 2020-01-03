@@ -86,11 +86,17 @@ class ChartWeb extends Component {
         config = JSON.parse(config)
         let concatHTML = `${this.state.init}${flattenObject(config)}${this.state.end}`;
 
+        let opacity = 1;
+
+        if (Platform.OS === 'ios' && !loaded) {
+          opacity = 0;
+        }
+
         return (
           <View
               style={{
                   ...this.props.style,
-                  opacity: loaded ? 1 : 0,
+                  opacity,
               }}
           >
               <WebView
@@ -105,7 +111,9 @@ class ChartWeb extends Component {
                   originWhitelist={["file://"]}
                   onLoadEnd={(e) => {
                       if (!loaded) {
+                        setTimeout(() => {
                           this.setState({ loaded: true });
+                        }, 200);
                       }
                   }}
                   {...this.props}
