@@ -107,6 +107,7 @@ class ChartWeb extends Component {
                   domStorageEnabled={true}
                   scalesPageToFit={true}
                   scrollEnabled={false}
+                  useWebkit={true}
                   automaticallyAdjustContentInsets={true}
                   originWhitelist={["file://"]}
                   onLoadEnd={(e) => {
